@@ -18,11 +18,23 @@ class App extends React.Component {
     this.addTrack = this.addTrack.bind(this);//make sure it can be used in the render function
     this.removeTrack = this.removeTrack.bind(this)
     this.updatePlaylistName = this.updatePlaylistName.bind(this)
+    this.savePlaylist = this.savePlaylist.bind(this)
   }
 
   //update playlist name method
   updatePlaylistName(name) {
     this.setState({playlistName: name})
+  }
+
+  //saving the playlist to a users account
+  savePlaylist() {
+    //need to generate an array of trackuri's
+    const trackUris =[];
+    this.state.playlistTracks.forEach(track => {
+      //filler for now since I need to go and read the spotify documentation
+      trackUris.push(Math.floor(Math.random() * 500));
+    })
+    this.setState({playlistUris: trackUris})
   }
 
   addTrack(track) {//functon to add a track to the state playlist
@@ -63,7 +75,8 @@ class App extends React.Component {
           <Playlist playlistName={this.state.playlist}
           playlistTracks={this.state.playlistTracks}
           onRemove={this.removeTrack}
-          onNameChange={this.updatePlaylistName}/>
+          onNameChange={this.updatePlaylistName}
+          onSave={this.savePlaylist}/>
         </div>
       </div>
     </div>
