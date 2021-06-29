@@ -5,8 +5,6 @@ import { Track } from '../Track/Track'
 export class TrackList extends React.Component {
     constructor(props){
         super(props);
-        console.log(`You are here ${(this.props.tracks)}`)
-
     }
 
     render() {

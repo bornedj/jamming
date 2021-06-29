@@ -15,6 +15,15 @@ class App extends React.Component {
       playlistName: 'test playlist name',
       playlistTracks: [{name: "playlist track name 1", artist: "playlist artist", album: "playlist album", id: "playlist id"}]
     }
+    this.addTrack = this.addTrack.bind(this);//make sure it can be used in the render function
+  }
+
+  addTrack(track) {//functon to add a track to the state playlist
+    this.state.playlistTracks.forEach(playlistTrack => {//checking for track by its id
+      if(track.id === playlistTrack.id) {
+        //code will go here logic check works
+      }
+    })
   }
 
   render() {
