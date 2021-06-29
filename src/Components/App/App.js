@@ -1,14 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
-import { SearchBar } from './SearchBar/SearchBar'
-import { SearchResults } from './SearchResults/SearchResults'
-import { Playlist } from './Playlist/Playlist'
+import { SearchBar } from '../SearchBar/SearchBar.js'
+import { SearchResults } from '../SearchResults/SearchResults.js'
+import { Playlist } from '../Playlist/Playlist'
 import React from 'react';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state.searchResults = [];
+    this.state = { searchResults: [{name: "bitch don't kill my vibe", artist: "Kendrick Lamar", album: "good kid maad city", id: "idk"}]}
   }
 
   render() {
