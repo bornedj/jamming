@@ -43,7 +43,9 @@ class App extends React.Component {
 
   //search function that will be connected with spotify's api 
   search(searchTerm) {
-    console.log(searchTerm);
+    Spotify.search(searchTerm).then(searchResults => {
+      this.setState({searchResults: searchResults})
+    })
   }
 
   addTrack(track) {//functon to add a track to the state playlist
@@ -74,7 +76,7 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(process.env.REACT_APP_Spotify_clientID)
+    console.log(process.env.REACT_APP_clientID)
     return (
     <div>
       <h1>Ja<span className="highlight">mmm</span>ing</h1>
@@ -87,7 +89,7 @@ class App extends React.Component {
           onRemove={this.removeTrack}
           onNameChange={this.updatePlaylistName}
           onSave={this.savePlaylist}/>
-          <button onClick={Spotify.getAccessToken}>test</button>
+          <button onClick={Spotify.search}>test</button>
         </div>
       </div>
     </div>
