@@ -87,6 +87,7 @@ class App extends React.Component {
           onRemove={this.removeTrack}
           onNameChange={this.updatePlaylistName}
           onSave={this.savePlaylist}/>
+          <button onClick={Spotify.getAccessToken}>test</button>
         </div>
       </div>
     </div>

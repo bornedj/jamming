@@ -1,7 +1,5 @@
-import SpotifyLogin from './SpotifyKeys'
 let userAccessToken;
 const redirectUri = "http://localhost:3000/";
-const clientId = SpotifyLogin.clientID;
 
 
 const Spotify = {
@@ -11,7 +9,7 @@ const Spotify = {
             return userAccessToken;
         } else {
             //sending users to authenticate their spotify account
-            window.location = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`
+            window.location = `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_clientID}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`
 
             const userAccessTokenMatch = window.location.href.match(/access_token=([^&]*)/)
             const expiresInMatch = window.location.href.match(/expires_in=([^&]*)/)
