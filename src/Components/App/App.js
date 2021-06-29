@@ -73,7 +73,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(process.env.REACT_APP_Spotify_clientID)
     return (
     <div>
       <h1>Ja<span className="highlight">mmm</span>ing</h1>
