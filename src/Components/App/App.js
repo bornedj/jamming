@@ -15,10 +15,12 @@ class App extends React.Component {
       playlistName: 'test playlist name',
       playlistTracks: [{name: "playlist track name 1", artist: "playlist artist", album: "playlist album", id: "playlist id"}]
     }
+    //method binds
     this.addTrack = this.addTrack.bind(this);//make sure it can be used in the render function
     this.removeTrack = this.removeTrack.bind(this)
     this.updatePlaylistName = this.updatePlaylistName.bind(this)
     this.savePlaylist = this.savePlaylist.bind(this)
+    this.search = this.search.bind(this);
   }
 
   //update playlist name method
@@ -26,7 +28,7 @@ class App extends React.Component {
     this.setState({playlistName: name})
   }
 
-  //saving the playlist to a users account
+  //function to create an array full of the playlist uris. will be passed to function that will save it to the users accounts
   savePlaylist() {
     //need to generate an array of trackuri's
     const trackUris =[];
@@ -35,6 +37,11 @@ class App extends React.Component {
       trackUris.push(Math.floor(Math.random() * 500));
     })
     this.setState({playlistUris: trackUris})
+  }
+
+  //search function that will be connected with spotify's api 
+  search(searchTerm) {
+    console.log(searchTerm);
   }
 
   addTrack(track) {//functon to add a track to the state playlist
@@ -69,7 +76,7 @@ class App extends React.Component {
     <div>
       <h1>Ja<span className="highlight">mmm</span>ing</h1>
       <div className="App">
-        <SearchBar />
+        <SearchBar onSearch={this.search}/>
         <div className="App-playlist">
           <SearchResults searchResults={this.state.searchResults} onAdd={this.addTrack}/>
           <Playlist playlistName={this.state.playlist}
