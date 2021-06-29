@@ -16,6 +16,7 @@ class App extends React.Component {
       playlistTracks: [{name: "playlist track name 1", artist: "playlist artist", album: "playlist album", id: "playlist id"}]
     }
     this.addTrack = this.addTrack.bind(this);//make sure it can be used in the render function
+    this.removeTrack = this.removeTrack.bind(this)
   }
 
   addTrack(track) {//functon to add a track to the state playlist
@@ -29,6 +30,22 @@ class App extends React.Component {
     this.setState({playlistTracks: savedTracks})
   }
 
+  //remove track function will work with playlist state and will be passed to the track button
+  removeTrack(track) {
+    const savedTracks = this.state.playlistTracks;
+    const newTrackList = [];
+
+    //if the track is not the one that needs to be removed then we push it to a new array of objects
+    savedTracks.forEach(savedTrack => {
+      if (savedTrack.id === track.id) {
+        return;
+      }
+      newTrackList.push(savedTrack)
+    })
+    
+    this.setState({playlistTracks: newTrackList})
+  }
+
   render() {
     return (
     <div>
@@ -37,7 +54,9 @@ class App extends React.Component {
         <SearchBar />
         <div className="App-playlist">
           <SearchResults searchResults={this.state.searchResults} onAdd={this.addTrack}/>
-          <Playlist playlistName={this.state.playlist} playlistTracks={this.state.playlistTracks}/>
+          <Playlist playlistName={this.state.playlist}
+          playlistTracks={this.state.playlistTracks}
+          onRemove={this.removeTrack}/>
         </div>
       </div>
     </div>
