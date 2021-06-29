@@ -19,11 +19,14 @@ class App extends React.Component {
   }
 
   addTrack(track) {//functon to add a track to the state playlist
-    this.state.playlistTracks.forEach(playlistTrack => {//checking for track by its id
-      if(track.id === playlistTrack.id) {
-        //code will go here logic check works
-      }
-    })
+    const savedTracks = this.state.playlistTracks
+    if (savedTracks.find(savedTrack => savedTrack.id === track.id)) {//checks if the track is in the playlist by ID
+      return;
+    }
+
+    //update the state of the playlist
+    savedTracks.push(track);
+    this.setState({playlistTracks: savedTracks})
   }
 
   render() {
@@ -33,7 +36,7 @@ class App extends React.Component {
       <div className="App">
         <SearchBar />
         <div className="App-playlist">
-          <SearchResults searchResults={this.state.searchResults} />
+          <SearchResults searchResults={this.state.searchResults} onAdd={this.addTrack}/>
           <Playlist playlistName={this.state.playlist} playlistTracks={this.state.playlistTracks}/>
         </div>
       </div>
