@@ -3,6 +3,7 @@ import { SearchBar } from '../SearchBar/SearchBar.js'
 import { SearchResults } from '../SearchResults/SearchResults.js'
 import { Playlist } from '../Playlist/Playlist'
 import React from 'react';
+import Spotify from '../../util/Spotify'
 
 class App extends React.Component {
   constructor(props) {
@@ -73,6 +74,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(process.env.REACT_APP_Spotify_clientID)
     return (
     <div>
       <h1>Ja<span className="highlight">mmm</span>ing</h1>
@@ -85,6 +87,7 @@ class App extends React.Component {
           onRemove={this.removeTrack}
           onNameChange={this.updatePlaylistName}
           onSave={this.savePlaylist}/>
+          <button onClick={Spotify.getAccessToken}>test the spotify authenticate</button>
         </div>
       </div>
     </div>
