@@ -5,16 +5,18 @@ import { Track } from '../Track/Track'
 export class TrackList extends React.Component {
     constructor(props){
         super(props);
+        console.log(`You are here ${(this.props.tracks)}`)
+
     }
 
     render() {
         return (
             <div className="TrackList">
                 {
-                    // this.props.tracks.map(track => {
-                    //     return <Track track={track}
-                    //     key={track.id}/>
-                    // })
+                    this.props.tracks.map(track => {
+                        return <Track track={track}
+                        key={track.id}/>
+                    })
                 }
             </div>
         )
