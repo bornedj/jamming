@@ -1,8 +1,8 @@
 import spotifyLogin from './SpotifyLogin'
 let userAccessToken;
 const redirectUri;
-const clientID = spotifyLogin.clientID;
-const clientSecret = spotifyLogin.clientSecret;
+const cliendId = process.env.REACT_APP_Spotify_cliendID;
+const clientSecret = process.env.REACT_APP_Spotify_clientSecret;
 
 const Spotify = {
     getAccessToken() {
