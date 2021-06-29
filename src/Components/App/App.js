@@ -17,6 +17,12 @@ class App extends React.Component {
     }
     this.addTrack = this.addTrack.bind(this);//make sure it can be used in the render function
     this.removeTrack = this.removeTrack.bind(this)
+    this.updatePlaylistName = this.updatePlaylistName.bind(this)
+  }
+
+  //update playlist name method
+  updatePlaylistName(name) {
+    this.setState({playlistName: name})
   }
 
   addTrack(track) {//functon to add a track to the state playlist
@@ -56,7 +62,8 @@ class App extends React.Component {
           <SearchResults searchResults={this.state.searchResults} onAdd={this.addTrack}/>
           <Playlist playlistName={this.state.playlist}
           playlistTracks={this.state.playlistTracks}
-          onRemove={this.removeTrack}/>
+          onRemove={this.removeTrack}
+          onNameChange={this.updatePlaylistName}/>
         </div>
       </div>
     </div>
