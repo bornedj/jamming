@@ -7,7 +7,7 @@ import React from 'react';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { searchResults: [{name: "bitch don't kill my vibe", artist: "Kendrick Lamar", album: "good kid maad city", id: "idk"}]}
+    this.state = { searchResults: [{name: "bitch don't kill my vibe", artist: "Kendrick Lamar", album: "good kid maad city", id: "idk"}, {name: "name2", artist: "artist2", album: "album 2", id: "id2"}]}
   }
 
   render() {
