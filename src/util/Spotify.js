@@ -1,6 +1,8 @@
+import spotifyLogin from './SpotifyLogin'
 let userAccessToken;
-const clientID = "1fdda9f5d25b4471ae5b6b1b6e76306a";
 const redirectUri;
+const clientID = spotifyLogin.clientID;
+const clientSecret = spotifyLogin.clientSecret;
 
 const Spotify = {
     getAccessToken() {
