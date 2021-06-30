@@ -11,11 +11,11 @@ class App extends React.Component {
 
     this.state = { searchResults: 
       [
-        {name: "bitch don't kill my vibe", artist: "Kendrick Lamar", album: "good kid maad city", id: "idk"},
-        {name: "name2", artist: "artist2", album: "album 2", id: "id2"}
+        // {name: "bitch don't kill my vibe", artist: "Kendrick Lamar", album: "good kid maad city", id: "idk"},
+        // {name: "name2", artist: "artist2", album: "album 2", id: "id2"}
       ],
-      playlistName: 'test playlist name',
-      playlistTracks: [{name: "playlist track name 1", artist: "playlist artist", album: "playlist album", id: "playlist id"}]
+      playlistName: 'new playlist',
+      playlistTracks: []
     }
     //method binds
     this.addTrack = this.addTrack.bind(this);//make sure it can be used in the render function
@@ -34,6 +34,12 @@ class App extends React.Component {
   savePlaylist() {
     //need to generate an array of trackuri's
     const trackUris =[];
+    Spotify.savePlaylist(this.state.playlistName, trackUris).then(() => {
+      this.setState({
+        playlistName: 'New playlist',
+        playlisttracks: []
+      })
+    })
     this.state.playlistTracks.forEach(track => {
       //filler for now since I need to go and read the spotify documentation
       trackUris.push(Math.floor(Math.random() * 500));
